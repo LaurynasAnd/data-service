@@ -10,6 +10,9 @@ doctrine:
         result_cache_driver:
             type: pool
             pool: doctrine.result_cache_pool
+        dql:
+            datetime_functions:
+                date_format: DoctrineExtensions\Query\Mysql\DateFormat
 
 framework:
     cache:
