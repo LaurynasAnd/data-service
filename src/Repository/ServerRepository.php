@@ -20,27 +20,11 @@ class ServerRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Server[] Returns an array of Server objects
+    //  * @return array Return raw data
     //  */
     
-    public function getStatistics($client)
+    public function getStatistics()
     {
-        // $qb = $this->createQueryBuilder('s');
-        // return $qb
-        //     ->select('FORMAT(s.date, \'yyyy-MM\') as month, s.client,  count(s.sign_smartid) as count')
-        //     // ->from('\Server', 's')
-        //     ->groupBy('month, s.client')
-        //     ->orderBy('s.client', 'ASC')
-        //     ->getQuery()
-        //     ->getResult()
-        // ;
-        // return $qb
-        //     ->select('DATE_FORMAT(s.date, \'%Y-%m\') as month, s.client, count(s.sign_smartid)')
-        //     ->groupBy('month')
-        //     ->orderBy('s.client', 'ASC')
-        //     ->getQuery()
-        //     ->getResult()
-        // ;
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
@@ -55,17 +39,4 @@ class ServerRepository extends ServiceEntityRepository
         // returns an array of arrays (i.e. a raw data set)
         return $stmt->fetchAllAssociative();
     }
-    
-
-    /*
-    public function findOneBySomeField($value): ?Server
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
