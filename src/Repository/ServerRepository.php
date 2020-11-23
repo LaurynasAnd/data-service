@@ -20,7 +20,7 @@ class ServerRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return array Return raw data
+    //  * @return array Return raw data set
     //  */
     
     public function getStatistics()

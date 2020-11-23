@@ -33,6 +33,10 @@ class ImportDataCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        if ('csv' != pathinfo($input->getArgument('directory'), PATHINFO_EXTENSION )){
+            $output->writeln('File extension is not .csv');
+            return Command::FAILURE;
+        }
         $start = getdate();
         $io = new SymfonyStyle($input, $output);
         $io->title('Importing contents from ' . $input->getArgument('directory'));

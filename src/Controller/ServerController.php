@@ -22,7 +22,7 @@ class ServerController extends AbstractController
     public function getData(ServerRepository $serverRepository, SerializerInterface $serializer) : Response
     {
         $data = $serverRepository->getStatistics();
-        // further data will be converted so that Resonse foormat will be:
+        // further data will be converted so that Response format will be:
         // {"client1":{"month1": "count1", "month2": "count2",}, "client2": {...}}, etc
         $convertedData = [];
         foreach($data as $row){

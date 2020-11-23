@@ -24,6 +24,12 @@ class ImportDataCommandTest extends KernelTestCase
         $this->assertStringContainsString('Importing contents from C:/xampp/htdocs/mock_backend_data.csv', $output);
         $this->assertStringContainsString('[OK] Data import completed', $output);
 
-        // ...
+        //check if command stops if file extension is not .csv
+        $commandTester->execute([
+                    // pass arguments to the helper
+                    'directory' => 'C:/xampp/htdocs/mock_backend_data.pdf',
+                ]);
+        $output = $commandTester->getDisplay();
+        $this->assertStringContainsString('File extension is not .csv', $output);
     }
 }
